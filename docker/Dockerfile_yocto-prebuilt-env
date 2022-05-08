@@ -1,0 +1,19 @@
+ARG IMAGE_FROM
+FROM ${IMAGE_FROM}
+
+ARG DEV_USER
+
+# ---------------------------------
+# Setting up the prebuilt directory
+# ---------------------------------
+# Assumes a prior run of the Yocto build outside from the Docker build process (as this is more robust)
+
+# Provide the prebuilt resources
+COPY --chown=${DEV_USER} downloads/ prebuilt/downloads/
+COPY --chown=${DEV_USER} sstate-cache/ prebuilt/sstate-cache/
+
+# ----------------------------
+# Initialization
+# ----------------------------
+COPY --chown=${DEV_USER} init.d/prebuilt.sh init.d/prebuilt.sh
+RUN echo "source ~/init.d/prebuilt.sh" >> .bashrc
