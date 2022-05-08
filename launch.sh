@@ -29,7 +29,7 @@ EOF
 # Command line arguments
 # ----------------------
 
-CMD=
+CMD=""
 while (( $# )); do
   case "$1" in
   --image)
