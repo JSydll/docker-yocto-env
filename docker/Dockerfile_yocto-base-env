@@ -9,26 +9,26 @@ ARG DEBIAN_FRONTEND=noninteractive
 # APT packages
 # ----------------------------
 
-# Base apt packages
+# APT packages
+# Required packages according to https://docs.yoctoproject.org/gatesgarth/ref-manual/ref-system-requirements.html (alphabetically sorted)
+# Note: Combining the update and the installs according to https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 RUN apt-get update && \
-    apt-get install -y -qq --no-install-recommends apt-utils locales
-
-# Required apt packages according to https://docs.yoctoproject.org/gatesgarth/ref-manual/ref-system-requirements.html (alphabetically sorted)
-RUN apt-get install -y -qq \ 
-    build-essential \
-    chrpath cpio \
-    debianutils diffstat \
-    gawk gcc-multilib git \
-    iputils-ping \
-    libegl1-mesa libsdl1.2-dev \
-    mesa-common-dev mtools \
-    nano \
-    parted pylint3 python3 python3-git python3-pip \
-    socat sudo \
-    texinfo \
-    unzip \
-    wget \
-    xterm xz-utils
+    apt-get install -y -qq \
+        apt-utils \
+        build-essential \
+        chrpath cpio \
+        debianutils diffstat \
+        gawk gcc-multilib git \
+        iputils-ping \
+        libegl1-mesa libsdl1.2-dev locales \
+        mesa-common-dev mtools \
+        nano \
+        parted pylint3 python3 python3-git python3-pip \
+        socat sudo \
+        texinfo \
+        unzip \
+        wget \
+        xterm xz-utils
 
 # Clean apt caches
 RUN apt-get clean && \
