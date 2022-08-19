@@ -39,6 +39,23 @@ The `launch.sh` script supports two ways to use the build environments:
   the `--command <command>` parameter to the `launch.sh` script. 
 
 
+## System requirements
+
+The main requirements to use this environment are
+
+- `bash`, and
+- `Docker` (see [official documentation](https://docs.docker.com/engine/install/) for guidance how to install Docker).
+
+They will be installed when you use the `./setup-host.sh` script.
+
+For development, it is also recommended to use `shellcheck` for clean scripting.
+Run it with `shellcheck ./*.sh ./*.inc` on this code base.
+
+The setup was tested on
+
+- `Ubuntu 20.04` and `Ubuntu 22.04`.
+
+
 ## Integration
 
 The straight forward way to integrate the environment into a Yocto stack is to load this repo as `git submodule`. 
