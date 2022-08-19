@@ -22,4 +22,5 @@ fi
 
 # Set template conf directory
 export TEMPLATECONF="${PROJECT_ROOT}/${PROJECT_TEMPLATE_DIR}"
+# shellcheck disable=SC1090
 . "${PROJECT_ROOT}/${POKY_DIR}/oe-init-build-env" &> /dev/null

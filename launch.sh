@@ -5,7 +5,8 @@
 # Launches a new background container for the given image.
 #
 # ------------------
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
+readonly SCRIPT_DIR
 . "${SCRIPT_DIR}/common.inc"
 
 function print_help()
@@ -60,6 +61,7 @@ if [[ -z "${IMAGE_NAME}" ]] || [[ -z "${ENV_FILE}" ]]; then
 fi
 
 # Also use the environment variables in this script
+# shellcheck disable=SC1090
 . "${ENV_FILE}" 
 
 # ---------

@@ -5,7 +5,6 @@
 # Exports a specified image to the given directory.
 #
 # ------------------
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 function print_help()
 {
@@ -49,9 +48,9 @@ function docker_export_image()
   echo "> Exporting the image '${image_name}' (this might take a while)..."
 
   local tar_file_name="docker.${image_name//:/_}.tar.gz"
-  docker save ${image_name} | gzip > ${export_dir}/${tar_file_name} \
+  docker save "${image_name}" | gzip > "${export_dir}/${tar_file_name}" \
     && echo ">> Saved to '${export_dir}/${tar_file_name}'." \
     || echo ">> Failed to export image!"
 }
 
-docker_export_image ${IMAGE_NAME} ${EXPORT_DIR}
+docker_export_image "${IMAGE_NAME}" "${EXPORT_DIR}"

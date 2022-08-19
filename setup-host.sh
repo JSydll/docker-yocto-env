@@ -5,13 +5,14 @@
 # Sets up the necessary host tools for running the Docker-based build environment.
 #
 # ------------------
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 # ------------------
 # Script environment
 # ------------------
-readonly DISTRO_NAME="$(sed -n 's/^ID=//p' /etc/os-release)"
-readonly DISTRO_VERSION="$(sed -n 's/^VERSION_CODENAME=//p' /etc/os-release)"
+DISTRO_NAME="$(sed -n 's/^ID=//p' /etc/os-release)"
+readonly DISTRO_NAME
+DISTRO_VERSION="$(sed -n 's/^VERSION_CODENAME=//p' /etc/os-release)"
+readonly DISTRO_VERSION
 
 function print_help()
 {
@@ -67,7 +68,7 @@ function install_docker()
 
   # Enable the current user to use docker without becoming root (if not already done)
   if ! groups | grep -c "docker" &> /dev/null; then
-    usermod -aG docker ${USER}
+    usermod -aG docker "${USER}"
     newgrp docker
   fi
 }

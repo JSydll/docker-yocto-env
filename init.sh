@@ -5,7 +5,8 @@
 # Enters and initializes the Yocto build environment.
 #
 # ------------------
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+readonly SCRIPT_DIR
 . "${SCRIPT_DIR}/common.inc"
 
 function print_help()
@@ -58,7 +59,7 @@ fi
 
 LAUNCH_CMD="${SCRIPT_DIR}/launch.sh --image ${DOCKER_IMAGE} --env-file ${ENV_FILE}"
 if [[ "${#POSITIONAL_ARGS[@]}" != "0" ]]; then
-  LAUNCH_CMD="${LAUNCH_CMD} --command \"${POSITIONAL_ARGS[@]}\""
+  LAUNCH_CMD="${LAUNCH_CMD} --command \"${POSITIONAL_ARGS[*]}\""
 fi
 eval "${LAUNCH_CMD}"
 
