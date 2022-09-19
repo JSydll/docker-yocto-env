@@ -66,6 +66,8 @@ Additional variables defined there will also be visible in the build environment
 
 Note: The special variable `BB_ENV_EXTRAWHITE` will be exported to the build environment by default.
 
+For compatibility reasons, avoid the usage of quotes in the assignment of environment variables in the `.env` file.
+
 
 ## Usage
 
@@ -74,6 +76,9 @@ All scripts provide a `--help` option showing more detailed information on their
 For a quickstart, simply setup your Linux host system via the `setup-host.sh` script, build a base image for running bitbake
 with `build.sh --env-file <path-to-file> --base-only` and enter the environment with `init.sh env-file <path-to-file>`.
 
+If you want to `launch.sh` the environment from a branch different than one of the supported main branches,
+be sure to **set the `RELEASE_TAG` variable with the desired branch/release** as this is used to determine
+the tag of the image to be started.
 
 ## Branching
 
