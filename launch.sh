@@ -75,7 +75,13 @@ echo "# ------------------------------"
 echo "# Launching build environment..."
 echo "# ------------------------------"
 
-DOCKER_RUN_CMD="docker run -it --rm \
+DOCKER_RUN_CMD="docker run "
+
+if [[ -z "${CMD}" ]]; then
+  DOCKER_RUN_CMD="${DOCKER_RUN_CMD} -it"
+fi
+
+DOCKER_RUN_CMD="${DOCKER_RUN_CMD} --rm \
   --name ${CONTAINER_NAME} -h ${HOSTNAME} \
   --network host \
   --user ${USER} \
