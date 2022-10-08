@@ -37,6 +37,10 @@ while (( $# )); do
     shift
     IMAGE_NAME="$1"    
     ;;
+  --extra-options)
+    shift
+    EXTRA_OPTIONS="$1"
+    ;;
   --command)
     shift
     # Explicitly source the bitbake environment to execute the command in it, 
@@ -90,10 +94,10 @@ DOCKER_RUN_CMD="${DOCKER_RUN_CMD} --rm \
   --network host \
   --user ${USER} \
   --volume=${MOUNT_VOLUME} \
-  --volume=${HOME}/.gitconfig:/home/${USER}/.gitconfig \
   --workdir=${PROJECT_ROOT} \
   --env-file ${ENV_FILE} \
   --env BB_ENV_EXTRAWHITE \
+  ${EXTRA_OPTIONS} \
   ${IMAGE_NAME}:${RELEASE_TAG}"
 
 if [[ -n "${CMD}" ]]; then
