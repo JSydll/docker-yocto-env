@@ -75,6 +75,10 @@ echo "# ------------------------------"
 echo "# Launching build environment..."
 echo "# ------------------------------"
 
+if [[ -z "${MOUNT_VOLUME}" ]]; then
+  MOUNT_VOLUME="${PROJECT_ROOT}:${PROJECT_ROOT}"
+fi
+
 DOCKER_RUN_CMD="docker run "
 
 if [[ -z "${CMD}" ]]; then
@@ -85,9 +89,9 @@ DOCKER_RUN_CMD="${DOCKER_RUN_CMD} --rm \
   --name ${CONTAINER_NAME} -h ${HOSTNAME} \
   --network host \
   --user ${USER} \
-  --volume=${PROJECT_ROOT}:${PROJECT_ROOT} --workdir=${PROJECT_ROOT} \
+  --volume=${MOUNT_VOLUME} \
   --volume=${HOME}/.gitconfig:/home/${USER}/.gitconfig \
-  --env WORKDIR=${PROJECT_ROOT} --env DEV_USER=${USER} \
+  --workdir=${PROJECT_ROOT} \
   --env-file ${ENV_FILE} \
   --env BB_ENV_EXTRAWHITE \
   ${IMAGE_NAME}:${RELEASE_TAG}"
