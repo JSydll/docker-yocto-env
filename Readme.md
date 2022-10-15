@@ -64,7 +64,7 @@ For a proper mounting of host sources and setup of the environment initalization
 Please refer to `integration/env.example` for the syntax and required environment variables.
 Additional variables defined there will also be visible in the build environment.
 
-Note: The special variable `BB_ENV_EXTRAWHITE` will be exported to the build environment by default.
+Note: The special variable `BB_ENV_PASSTHROUGH_ADDITIONS` will be exported to the build environment by default.
 
 For compatibility reasons, avoid the usage of quotes in the assignment of environment variables in the `.env` file.
 

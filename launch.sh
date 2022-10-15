@@ -96,7 +96,7 @@ DOCKER_RUN_CMD="${DOCKER_RUN_CMD} --rm \
   --volume=${MOUNT_VOLUME} \
   --workdir=${PROJECT_ROOT} \
   --env-file ${ENV_FILE} \
-  --env BB_ENV_EXTRAWHITE \
+  --env BB_ENV_PASSTHROUGH_ADDITIONS \
   ${EXTRA_OPTIONS} \
   ${IMAGE_NAME}:${RELEASE_TAG}"
 

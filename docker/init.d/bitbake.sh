@@ -18,7 +18,7 @@ if [[ -e "${PROJECT_ROOT}/${BUILD_DIR}/conf/local.conf" ]]; then
   rm -rf "${PROJECT_ROOT}/${BUILD_DIR}/conf"
 fi
 
-# Note: Extra env vars can be exported to the bitbake environment by adding them to BB_ENV_EXTRAWHITE
+# Note: Extra env vars can be exported to the bitbake environment by adding them to BB_ENV_PASSTHROUGH_ADDITIONS
 
 # Set template conf directory
 export TEMPLATECONF="${PROJECT_ROOT}/${PROJECT_TEMPLATE_DIR}"
